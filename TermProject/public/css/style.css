@@ -24,6 +24,14 @@
   font-size: 20px;
 }
 
+.settings .question2{
+  width: 600px;
+  font-family: "Roboto Slab", serif;
+  font-size: 15px;
+  font-color: #ff33cc;
+}
+
+
 /* ============================================================
   COMMON
 ============================================================ */

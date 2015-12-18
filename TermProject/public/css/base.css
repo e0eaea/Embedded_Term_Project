@@ -120,7 +120,7 @@ a:hover {
   INFO BAR
 ============================================================ */
 .info-bar {
-  background-color: #ca5160;
+  background-color: #ffb347;
   text-align: center;
 }
 .info-bar a.icon {
@@ -137,7 +137,7 @@ a:hover {
   z-index: 20px;
   content: attr(data-title);
   padding: 5px 10px;
-  background-color: #ca5160;
+  background-color: #ffb347;
   font-family: "Ubuntu", sans-serif;
   color: #fff;
   font-size: 12px;
@@ -202,8 +202,9 @@ header .logo {
   margin-left: -60px;
 }
 header .site-title {
-  background-color: #ca5160;
+  background-color: #ffb347;
   padding: 10px 30px;
+  font-size: 70px;
   text-align: center;
 }
 header .site-title h1 {
