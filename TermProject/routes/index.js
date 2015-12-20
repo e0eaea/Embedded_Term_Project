@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 
   });
 
-  console.log("확인 "+leds[0].use+" "+leds[1].use+" "+leds[2].use+" "+leds[3].use);
+  console.log("확인 "+leds[0]+" "+leds[1]+" "+leds[2]+" "+leds[3]);
   res.render('index', {led:leds});
 
   connection.release();

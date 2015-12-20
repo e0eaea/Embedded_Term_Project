@@ -66,6 +66,25 @@ position:absolute; left:700px; top:560px;
 
   </header>
 
+  <%
+	var cabinetSize = cabinet_status.length;
+	for(var i =0; i<cabinetSize; i++)
+	{
+		var led_status = cabinet_status[i].번호;
+
+   if(led_status==1)
+ %>
+ <script>
+    $(function(){
+         $('#<%=i%>').attr("checked",true);
+    });
+   </script>
+
+  <% }
+  %>
+
+
+
   <div id="main">
     <div class="container">
 
@@ -76,7 +95,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive weather information?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-1" name=button1 class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="1" name=button1 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-1"></label>
           </div>
         </div><!-- /row -->
@@ -86,7 +105,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive news?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-2" name=button2 class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="2" name=button2 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-2"></label>
           </div>
         </div><!-- /row -->
@@ -96,7 +115,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive popular search word?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-3" name=button3 class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+            <input id="3" name=button3 class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
             <label for="cmn-toggle-3"></label>
           </div>
         </div><!-- /row -->
@@ -106,7 +125,7 @@ position:absolute; left:700px; top:560px;
             Do you want an alarm sounds?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-4" name=button4 class="cmn-toggle cmn-toggle-round" type="checkbox" value="1">
+            <input id="4" name=button4 class="cmn-toggle cmn-toggle-round" type="checkbox" value="1">
             <label for="cmn-toggle-4"></label>
 
           </div>
