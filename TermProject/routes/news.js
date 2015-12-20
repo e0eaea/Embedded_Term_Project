@@ -18,10 +18,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/',function(req,res,next){
-  pool.getConnection(function (err, connection) {
 
-    connection.release();
-  });
+  var b1=(req.body.button1)?1:0;
+  var b2=(req.body.button2)?1:0;
+  var b3=(req.body.button3)?1:0;
+  var b4=(req.body.button4)?1:0;
+
+ console.log("확인 "+b1+" "+b2+" "+b3+" "+b4);
 
 });
 

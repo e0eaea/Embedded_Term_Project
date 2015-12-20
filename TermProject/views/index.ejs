@@ -31,6 +31,20 @@
    color:    #909;
 }
 
+.dbg_btn {width:163px; height:42px; background:#1f82db;
+background: -webkit-gradient(linear, left top, left bottom, from(#309ae8), to(#1575d5), color-stop(0.5, #1f82db), color-stop(0.5, #1777d5));
+background: -moz-linear-gradient(top,  #309ae8,  #1575d5);
+color:#fff; text-align:center; font-weight:bold; font-size:20px; text-shadow:1px 1px 1px #000;
+-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;
+border:solid 1px #0d66c0;
+box-shadow:1px 1px 1px #55aeef;
+-moz-box-shadow:1px 1px 1px #55aeef;
+-webkit-box-shadow:1px 1px 1px #55aeef;
+position:absolute; left:700px; top:560px;
+
+}
+
+
 </style>
 
 
@@ -41,7 +55,7 @@
 <body>
 
 <div id="wrapper">
-
+ <form id="APPLY" action="/" method="post">
   <header>
 
     <div class="site-title">
@@ -62,7 +76,7 @@
             Do you want to receive weather information?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-1" name=button1 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-1"></label>
           </div>
         </div><!-- /row -->
@@ -72,7 +86,7 @@
             Do you want to receive news?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-2" name=button2 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-2"></label>
           </div>
         </div><!-- /row -->
@@ -82,7 +96,7 @@
             Do you want to receive popular search word?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-3" name=button3 class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
             <label for="cmn-toggle-3"></label>
           </div>
         </div><!-- /row -->
@@ -92,7 +106,7 @@
             Do you want an alarm sounds?
           </div>
           <div class="switch">
-            <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+            <input id="cmn-toggle-4" name=button4 class="cmn-toggle cmn-toggle-round" type="checkbox" value="1">
             <label for="cmn-toggle-4"></label>
 
           </div>
@@ -102,16 +116,16 @@
           <div class="question2">
             (Date Hour)
           </div>
-            <input type="text" class='datetimepicker' style="height:30px;" vertical-align:bottom value="">
+            <input type="text" class='datetimepicker' name=date style="height:30px;" vertical-align:bottom >
           <div class="question3">
             (Minute)
           </div>
-          <input placeholder="ex) 00~60" style="height:30px;">
-
+          <input placeholder="ex) 00~60" name=minute style="height:30px;">
 
         </div><!-- /row -->
-
+        <div class="dbg_btn" onclick="submit();">SUBMIT</div>
     </div>
+
   </div><!-- #main -->
 
 </div><!-- /#wrapper -->
@@ -147,6 +161,15 @@ _gaq.push(['_trackPageview']);
        dateOnly:true
         });
       });
+
+    function submit()
+    {
+        var result= confirm("Do want to submit?");
+						if(result)$("#APPLY").submit();
+						else return false;
+     }
+
+
   </script>
 
 </body>

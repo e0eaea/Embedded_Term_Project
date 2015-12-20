@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <wiringPi.h>
+
+
 
 #define SW1 0 // BCM_GPIO  17
 #define SW2 1 // BCM_GPIO  18
@@ -16,6 +19,7 @@
 
 int main (int argc, char* argv[])
 {
+
     if (wiringPiSetup() == -1)
         return 1 ;
     
@@ -43,19 +47,19 @@ int main (int argc, char* argv[])
     int current_led4=0;
     int buzz5=0;
     
-    if(argv[1]=="1")
-       digitalWrite(LED1, 1);
-    if(argv[1]=="2")
-        digitalWrite(LED2, 1);
-    if(argv[1]=="3")
-        digitalWrite(LED3, 1);
-    if(argv[1]=="4")
-        digitalWrite(LED4, 1);
-    if(argv[1]=="5")
-        digitalWrite(BUZZ, 1);
+    int light=0;
+    if(!strcmp(argv[2],"1")) light=1;
     
+    if(!strcmp(argv[1],"1"))
+        digitalWrite(LED1,light);
+    if(!strcmp(argv[1],"2"))
+        digitalWrite(LED2,light);
+    if(!strcmp(argv[1],"3"))
+        digitalWrite(LED3,light);
+    if(!strcmp(argv[1],"4"))
+        digitalWrite(LED4,light);
+    if(!strcmp(argv[1],"5"))
+        digitalWrite(BUZZ,light);
     
-    
-   
     return 0 ;
 }
