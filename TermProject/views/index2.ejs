@@ -15,24 +15,6 @@
   <link href="css/base.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
-  <style>
-  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #909;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #909;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #909;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #909;
-}
-
-</style>
-
 
   <!-- js -->
   <!--[if lt IE 9]><script src="js/html5shiv.min.js"></script><![endif]-->
@@ -59,7 +41,7 @@
 
         <div class="row">
           <div class="question">
-            Do you want to receive weather information?
+            Do you want Sport?
           </div>
           <div class="switch">
             <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
@@ -69,7 +51,7 @@
 
         <div class="row">
           <div class="question">
-            Do you want to receive news?
+            Do you want Weather?
           </div>
           <div class="switch">
             <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox">
@@ -79,7 +61,7 @@
 
         <div class="row">
           <div class="question">
-            Do you want to receive popular search word?
+            3
           </div>
           <div class="switch">
             <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox">
@@ -89,27 +71,32 @@
 
         <div class="row">
           <div class="question">
-            Do you want an alarm sounds?
+            4
           </div>
           <div class="switch">
-            <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+            <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="true">
             <label for="cmn-toggle-4"></label>
+          </div>
+        </div><!-- /row -->
+
+        <div class="row">
+          <div class="question">
+            5
+          </div>
+          <div class="switch">
+            <input id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+            <label for="cmn-toggle-5"></label>
 
           </div>
         </div><!-- /row -->
 
         <div class="row">
           <div class="question2">
-            (Date Hour)
+            (알람시간)
           </div>
             <input type="text" class='datetimepicker' style="height:30px;" vertical-align:bottom value="">
-          <div class="question3">
-            (Minute)
-          </div>
-          <input placeholder="ex) 00~60" style="height:30px;">
-
-
         </div><!-- /row -->
+
 
     </div>
   </div><!-- #main -->

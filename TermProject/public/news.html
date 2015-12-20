@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://media.daum.net/common//wing.data"></script>
+  <style type="text/css">
+   /*TAB CSS*/
+   ul.tabs {
+     font-family:"Malgun Gothic";
+              font-size:12px;
+     margin: 0;
+     padding: 0;
+     float: left;
+     list-style: none;
+     height: 32px; /*--Set height of tabs 탭메뉴 높이 설정--*/
+     border-bottom: 1px solid #999;
+     border-left: 1px solid #999;
+     width: 100%;
+   }
+
+   ul.tabs li {
+     float: left;
+     margin: 0;
+     padding: 0;
+     height: 32px; /*--Subtract 1px from the height of the unordered list--*/
+     line-height: 32px; /*--Vertically aligns the text within the tab 탭 메뉴 넓이 설정 -- */
+     border: 1px solid #999;
+     border-left: none;
+     margin-bottom: -1px; /*--Pull the list item down 1px--*/
+     overflow: hidden;
+     position: relative;
+     background: #e0e0e0;
+   }
+
+   ul.tabs li a {
+     text-decoration: none;
+     color: #000;
+     display: block;
+     font-size: 12px;
+     padding: 0 20.5px;  /* tab menu size 탭메뉴 사이즈  */
+     /* padding: 0 20px; */
+     /*--Gives the bevel look with a 1px white border inside the list item--*/
+     border: 1px solid #fff;
+     outline: none;
+   }
+
+   ul.tabs li a:hover {
+     background: #f1f1f1;
+    /* background: #ccc;  */
+   }
+   html ul.tabs li.active, html ul.tabs li.active a:hover  {
+      /*--Makes sure that the active tab does not listen to the hover properties--*/
+     background: #fff;
+     /*--Makes the active tab look like it's connected with its content--*/
+     border-bottom: 1px solid #fff;
+   }
+   /*Tab Conent CSS*/
+   .tab_container {
+     border: 1px solid #999;
+     border-top: none;
+     overflow: hidden;
+     clear: both;
+     float: left;
+     width: 100%;
+     background: #fff;
+   }
+
+   .tab_content {
+     padding: 10px;
+     /* padding: 20px; */
+     font-size: 12px;
+   }
+   .screen_out {display:none;}
+   </style>
+
+   <body>
+  <div>
+  <ul>
+  <li>다음 실시간 주요뉴스  </li>
+  </ul>
+  </div>
+  <script  type="text/javascript">
+  function News_realTime(Item_Name) {
+    // Item_Name = "NE(sisa),SP(sport),LI(life),EN(enter)"      종합 뉴스 데이터
+    // wing_primary_auto(NE:(articles:{bold:,  url:,  title:  })) 연예  뉴스 데이터
+    // wing_primary_auto.SP(articles:{bold:,  url:,  title:  })     스포츠 뉴스 데이터
+
+  //var wing_primary_auto   = new Object({"NE":{"articles":[{"bold":"N","url":"http:\/\/media.daum.net\/v\/20150610124419317","title":"다시 불러보는 6월의 노래"},{"bold":"Y","url":"http:\/\/media.daum.net\/v\/20150610121016696","title":"실수로 통장에 들어온 돈, 어떻게 해야 할까?"}]}
+
+      var index;
+      var text_items = "<ul>";
+      var obj_Items = eval("wing_primary_auto."+Item_Name+".articles");   // Item_name : 구분 NE, SP, LI
+      var last_cnt = obj_Items.length;         // 뉴스 아이템 총 카운트
+      var link_domain = "<a href=http://media.daum.net/foreign/others/newsview?newsid=" ;    // 뉴스 내용보기 만들기(다음뉴스 URL을 그대로 사용할수 있습니다.
+      var link_right =  "&menu=1&tab='news_tab.eval(Itam_Name)'   target='_blank'>";    //뉴스 클릭후 텝메뉴 설정
+
+      //   document.write("<br>Items_Name="+obj_Items);
+     //document.write("<br>lascnt="+last_cnt);
+
+      for (index = 0; index < obj_Items.length; index++) {
+          text_items  += "<li>"
+          text_items  += link_domain;
+          text_items  += obj_Items[index].url.split("\/v\/")[1];
+          text_items  += link_right ;
+          text_items  += obj_Items[index].title;
+          text_items  += "</a>";
+      text_items  += "</li>";
+      }
+      text_items += "</ul>";
+
+      document.write(text_items);
+
+      //document.getElementById(eval("'cont_"+Item_Name+"'")).innerHTML = text_items;
+  }
+  </script>
+
+  <table border="0" width="100%"  cellpadding="0"  cellspacing="0">
+   <tr  height="35" >
+    <td  bgcolor="#FfFfFf"  valign="bottom" style="padding-left:10px"  align="left"><b>주요 뉴스</b></td>
+   </tr>
+  </table>
+  <table border="0" width="100%"  cellpadding="0"  cellspacing="0">
+   <tr  height="35" >
+    <td  bgcolor="#FfFfFf"  valign="bottom" style="padding-left:1px"  align="left">
+  <div id="news_wrapper">
+   <!-- tab 메뉴 -->
+   <ul class="tabs">
+       <li><a href="#tab1">종합</a></li>
+       <li><a href="#tab2">스포츠</a></li>
+           <li><a href="#tab3"> 연예 </a></li>
+       <li><a href="#tab4">라이프</a></li>
+   </ul>
+   <!-- tab 내용 -->
+   <div class="tab_container">
+       <div id="tab1" class="tab_content">
+           <!--NE_Content-->
+           <h4 class="screen_out">종합</h4>
+      <script>News_realTime('NE')</script>
+       </div>
+       <div id="tab2" class="tab_content">
+          <!--SP_Content-->
+          <h4 class="screen_out">스포츠</h4>
+     <script>News_realTime('SP')</script>
+    </div>
+       <div id="tab3" class="tab_content">
+          <!--EN_Content-->
+        <h4 class="screen_out">연예</h4>
+    <script>News_realTime('EN')</script>
+      </div>
+       <div id="tab4" class="tab_content">
+          <!--LI_Content-->
+          <h4 class="screen_out">라이프</h4>
+    <script>News_realTime('LI')</script>
+    </div>
+   </div>
+  </div>
+  <script type="text/javascript">
+  $(document).ready(function() {
+     //페이지 데이터 읽기
+     $(".tab_content").hide(); //모든  content  감추기
+     $("ul.tabs li:first").addClass("active").show();  //처음  tab 활성
+     $(".tab_content:first").show(); // 처음 tab content 보이기
+     //On Click Event
+     $("ul.tabs li").click(function() {
+      $("ul.tabs li").removeClass("active");   //"active(활성)" class Remove
+      $(this).addClass("active");   //Add "active" class to selected tab
+      $(".tab_content").hide();   //Hide all tab content
+      var activeTab = $(this).find("a").attr("href"); // Find (href attribute value)을 정의된 active tab + content
+      $(activeTab).fadeIn(); //Fade in(active ID content)
+      return false;
+     });
+
+  });
+  </script>
+    </td>
+   </tr>
+  </table>
+  <table border="0" width="100%" bgcolor="#ffffff"><tr><td height="5"></td></tr></table>
+
+
+
+</body>
+</html>
