@@ -175,7 +175,7 @@ _gaq.push(['_trackPageview']);
 	  var result= confirm("Do want to submit?");
 	
 	if($("#cmn-toggle-1").is(":checked"))
-       $.get("led1_on.php"); 
+        {$.get("/led1_on.php"); alert("111");} 
       else
        $.get("led1_off.php");
 
