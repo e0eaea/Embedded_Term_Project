@@ -54,8 +54,10 @@ position:absolute; left:700px; top:560px;
 
 <body>
 
+<form id="APPLY" action="/" method="post">
+
 <div id="wrapper">
- <form id="APPLY" action="/" method="post">
+
   <header>
 
     <div class="site-title">
@@ -65,26 +67,6 @@ position:absolute; left:700px; top:560px;
     </div><!-- /.site-title -->
 
   </header>
-
-  <%
-	var cabinetSize = cabinet_status.length;
-	for(var i =0; i<cabinetSize; i++)
-	{
-		var led_status = cabinet_status[i].번호;
-
-   if(led_status==1)
- %>
- <script>
-    $(function(){
-         $('#<%=i%>').attr("checked",true);
-    });
-   </script>
-
-  <% }
-  %>
-
-
-
   <div id="main">
     <div class="container">
 
@@ -95,7 +77,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive weather information?
           </div>
           <div class="switch">
-            <input id="1" name=button1 class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-1" name=button1 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-1"></label>
           </div>
         </div><!-- /row -->
@@ -105,7 +87,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive news?
           </div>
           <div class="switch">
-            <input id="2" name=button2 class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-2" name=button2 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-2"></label>
           </div>
         </div><!-- /row -->
@@ -115,7 +97,7 @@ position:absolute; left:700px; top:560px;
             Do you want to receive popular search word?
           </div>
           <div class="switch">
-            <input id="3" name=button3 class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+            <input id="cmn-toggle-3" name=button3 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-3"></label>
           </div>
         </div><!-- /row -->
@@ -125,7 +107,7 @@ position:absolute; left:700px; top:560px;
             Do you want an alarm sounds?
           </div>
           <div class="switch">
-            <input id="4" name=button4 class="cmn-toggle cmn-toggle-round" type="checkbox" value="1">
+            <input id="cmn-toggle-4" name=button4 class="cmn-toggle cmn-toggle-round" type="checkbox">
             <label for="cmn-toggle-4"></label>
 
           </div>
@@ -145,6 +127,7 @@ position:absolute; left:700px; top:560px;
         <div class="dbg_btn" onclick="submit();">SUBMIT</div>
     </div>
 
+    </div>
   </div><!-- #main -->
 
 </div><!-- /#wrapper -->
@@ -161,18 +144,25 @@ _gaq.push(['_trackPageview']);
 </script>
 
 
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-34160351-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
 <script>
+     $(function(){
+          var led1=<%=led[0].use%>;
+	  var led2=<%=led[1].use%>;
+          var led3=<%=led[2].use%>;
+	  var led4=<%=led[3].use%>;
+
+	 if(led1==1)
+ 	    $("#cmn-toggle-1").attr("checked", true);			
+	 if(led2==1)
+            $("#cmn-toggle-2").attr("checked", true);
+	if(led3==1)
+            $("#cmn-toggle-3").attr("checked", true);
+	if(led4==1)
+            $("#cmn-toggle-4").attr("checked", true);
+	
+
+	});
+
       $(function(){
       $('.datetimepicker').datetimepicker({
         lang:'ko',
@@ -181,11 +171,32 @@ _gaq.push(['_trackPageview']);
         });
       });
 
-    function submit()
-    {
-        var result= confirm("Do want to submit?");
-						if(result)$("#APPLY").submit();
-						else return false;
+    function submit(){
+	  var result= confirm("Do want to submit?");
+	
+	if($("#cmn-toggle-1").is(":checked"))
+       $.get("led1_on.php"); 
+      else
+       $.get("led1_off.php");
+
+       if($("#cmn-toggle-2").is(":checked"))
+        $.get("led2_on.php"); 
+       else
+        $.get("led2_off.php");
+
+        if($("#cmn-toggle-3").is(":checked"))
+         $.get("led3_on.php"); 
+        else
+         $.get("led3_off.php");
+
+         if($("#cmn-toggle-4").is(":checked"))
+          $.get("led4_on.php"); 
+         else
+          $.get("led4_off.php"); 
+	
+
+	if(result)$("#APPLY").submit();
+	 else return false;
      }
 
 
@@ -193,3 +204,4 @@ _gaq.push(['_trackPageview']);
 
 </body>
 </html>
+
