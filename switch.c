@@ -26,7 +26,7 @@
 
 int main (int argc, char* argv[])
 {
- 
+   
     struct tm *t;
     time_t timer; // 시간측정
     
@@ -80,22 +80,26 @@ int main (int argc, char* argv[])
         while((row=mysql_fetch_row(res))!=NULL)// 한 ROW 씩 얻어 온다
             current_led[i++]=atoi(row[4]);
         
-	 char reservation_time[256];
-         char now_time[256];
-
+	
         len=mysql_query(conn_ptr, query2);
         res=mysql_store_result(conn_ptr); // 전속한 결과 값을 MYSQL_RES 변수에 저장
 
-        row=mysql_fetch_row(res);
+         i=0;
+	while((row=mysql_fetch_row(res))!=NULL)
+       { 
+         char reservation_time[256];
+         char now_time[256];
+
         char* date=row[0];
         char* minute=row[1];
 
         sprintf(reservation_time,"%s-%s",date,minute);
-        sprintf(now_time,"%d-%d-%d-%d",t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min);
-
+        sprintf(now_time,"%02d-%02d-%02d-%02d",t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min);
+        
+	printf("날짜비교\n%s\n%s\n",reservation_time,now_time);
         if(strcmp(reservation_time,now_time)==0 && current_led[3]==1)
  		digitalWrite(BUZZ, 1);	
-       
+       }
          digitalWrite(LED1, current_led[0]); 
         delay(200);
          digitalWrite(LED2, current_led[1]);

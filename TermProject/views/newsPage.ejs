@@ -31,13 +31,17 @@
       </script>
     </div>
     <ul data-role="listview" data-inset="true">
-      <li><a href="/weather">날씨</a></li>
-      <li><a href="/news">뉴스</a></li>
+      <li><a href="/weather.html" id="weather">날씨</a></li>
+      <li><a href="/news.html" id="news" >뉴스</a></li>
       <li><a href="/hello2.html">실시간검색어</a></li>
       <li><a href="/hello2.html">알람시간</a></li>
     </ul>
   </div>
 </section>
+<script>
+$('#news').click(function(e) { e.preventDefault(); window.open(this.href); });
+$('#weather').click(function(e) { e.preventDefault(); window.open(this.href); });
+</script>
 
 </body>
 </html>
