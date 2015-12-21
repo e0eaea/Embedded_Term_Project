@@ -46,8 +46,8 @@ router.post('/',function(req,res,next){
   b[3]=(req.body.button4)?1:0;
   var date=req.body.date;
   var minute=req.body.minute;
-
- console.log("확인 "+b[0]+" "+b[1]+" "+b[2]+" "+b[3]+" "+date+" "+minute);
+ 
+console.log("확인 "+b[0]+" "+b[1]+" "+b[2]+" "+b[3]+" "+date+" "+minute);
 
  pool.getConnection(function (err, connection) {
 	

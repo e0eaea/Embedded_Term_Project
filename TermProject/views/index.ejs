@@ -117,8 +117,8 @@ position:absolute; left:700px; top:560px;
           <div class="question2">
             (Date Hour)
           </div>
-            <input type="text" class='datetimepicker' name=date style="height:30px;" vertical-align:bottom >
-          <div class="question3">
+          <input placeholder="ex) 12-15-20" name=date style="height:30px;">  
+	<div class="question3">
             (Minute)
           </div>
           <input placeholder="ex) 00~60" name=minute style="height:30px;">
@@ -175,7 +175,7 @@ _gaq.push(['_trackPageview']);
 	  var result= confirm("Do want to submit?");
 	
 	if($("#cmn-toggle-1").is(":checked"))
-        {$.get("/led1_on.php"); alert("111");} 
+        {$.get("led1_on.php");} 
       else
        $.get("led1_off.php");
 

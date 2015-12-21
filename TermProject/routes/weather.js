@@ -5,6 +5,6 @@ var location='/';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.redirect("/news.html");
+	res.redirect("/weather.html");
 });
 module.exports = router;
